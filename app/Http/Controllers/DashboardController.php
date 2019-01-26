@@ -3,9 +3,11 @@
 namespace Atomix\Http\Controllers;
 
 use Auth;
-use Illuminate\Http\Request;
 
-class HomeController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+class DashboardController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -14,11 +16,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            return view('home');
-        }
-        else {
-            return view('welcome');
-        }
+        return redirect('/');
     }
 }

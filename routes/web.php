@@ -11,6 +11,12 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+	return view('home');
+} );
+
+Route::get('/dashboard', "DashboardController@index")->middleware('auth');
+
+Route::get('/atom/edit', 'AtomController@index')->middleware('verified');
