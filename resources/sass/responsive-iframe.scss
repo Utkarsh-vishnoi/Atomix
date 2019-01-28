@@ -110,3 +110,22 @@
     height: 300px;
   }
 }
+
+.wrapper {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap
+}
+
+.item {
+  display: inline-block;
+  flex: 1 300px;
+}
+
+@media all and (max-height: 400px) {
+  .iframe {
+    height: 300px;
+  }
+}
