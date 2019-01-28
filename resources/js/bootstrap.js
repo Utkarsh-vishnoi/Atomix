@@ -13,6 +13,7 @@ try {
 
     require('bootstrap');
     require('./bootstrap.notify');
+    require('./responsive-iframes');
 } catch (e) {}
 
 /**
