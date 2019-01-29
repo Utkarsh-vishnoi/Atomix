@@ -36697,7 +36697,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "wrapper" },
+    { staticClass: "iframe-wrapper" },
     _vm._l(_vm.frames, function(link, index) {
       return _c("v-iframe", { key: index, attrs: { url: link } })
     }),
@@ -48532,3 +48532,4 @@ module.exports = __webpack_require__(/*! C:\Users\Utkarsh\Desktop\Atomix\resourc
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map
