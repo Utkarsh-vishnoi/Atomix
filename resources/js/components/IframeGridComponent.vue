@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+	<div class="iframe-wrapper">
     	<v-iframe v-for="(link, index) in frames" :key="index" :url="link"></v-iframe>
    	</div>
 </template>
