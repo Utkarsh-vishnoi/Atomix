@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', "DashboardController@index")->middleware('auth');
 
-Route::get('/atom/edit', 'AtomController@index')->middleware('verified');
+Route::get('/new/atom', 'AtomController@new')->middleware('verified')->name('newAtom');
+
+Route::get('/atom/edit', 'AtomController@edit')->middleware('verified');
