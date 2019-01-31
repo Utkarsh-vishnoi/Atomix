@@ -18,4 +18,10 @@ class DashboardController extends Controller
     {
         return redirect('/');
     }
+
+    public function getFrames()
+    {
+   		$atoms = Auth::user()->atoms()->exclude(['skel', 'style', 'func', 'updated_at'])->get();
+   		return response()->json($atoms);
+    }
 }
