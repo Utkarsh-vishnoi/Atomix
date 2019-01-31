@@ -15,6 +15,7 @@ class CreateAtomsTable extends Migration
     {
         Schema::create('atoms', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('title', 50);
             $table->text('description');
             $table->text('skel');

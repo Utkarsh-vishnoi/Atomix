@@ -14,10 +14,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User;
-        $user->name = 'Utkarsh Vishnoi';
-        $user->email = 'utkarshvishnoi25@gmail.com';
-        $user->password = Hash::make('secret');
-        $user->save();
+        // $user = new User;
+        // $user->name = 'Utkarsh Vishnoi';
+        // $user->email = 'utkarshvishnoi25@gmail.com';
+        // $user->password = Hash::make('secret');
+        // $user->save();
+
+        factory(Atomix\User::class, 2)->create()->each(function($u) {
+            $u->atoms()->save(factory(Atomix\Atom::class)->make());
+        });
     }
 }

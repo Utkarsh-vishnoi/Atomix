@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', "DashboardController@index")->middleware('auth');
 
-Route::get('/new/atom', 'AtomController@new')->middleware('verified')->name('newAtom');
+Route::get('/json/frames', 'DashboardController@getFrames');
+
+Route::get('/atom/new', 'AtomController@new')->middleware('verified')->name('newAtom');
 
 Route::get('/atom/edit', 'AtomController@edit')->middleware('verified');
+
+Route::get('/atom/preview/{id}', 'AtomController@preview')->name('preview');
