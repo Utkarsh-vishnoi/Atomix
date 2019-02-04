@@ -1,7 +1,8 @@
 <template>
     <div class="iframe-item">
         <div class="iframe">
-            <iframe :src="url" />
+            <iframe scrolling="no" :src="data.preview_url" />
+            <div class="iframe-overlay"></div>
         </div>
     </div>
 </template>
@@ -9,8 +10,8 @@
 <script>
     export default {
         props: {
-            url: {
-                type: String,
+            data: {
+                type: Object,
                 required: true
             }
         },

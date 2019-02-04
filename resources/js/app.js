@@ -1,46 +1,32 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+
+let state = JSON.parse(window.__INITIAL_STATE__);
 
 const app = new Vue({
-    el: '#mainContent',
+    el: '#app',
     data: {
-        frameData: [
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80",
-            "http://localhost:80"
-        ]
+        state: state
+    },
+    computed: {
+        aria1: function() {
+            return this.state.current_page == 1 ? 'page' : null;
+        },
+        ariaLast: function() {
+            return this.state.current_page == this.state.last_page ? 'page' : '';
+        },
+        baseUrl: function() {
+            return this.state.path + '?page=';
+        },
+        loopCounter: function() {
+            return this.state.last_page - 3 >= 0 ? this.state.last_page - 2 : 0;
+        }
     }
 });

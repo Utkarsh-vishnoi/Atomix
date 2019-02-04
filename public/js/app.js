@@ -1771,10 +1771,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    url: {
-      type: String,
+    data: {
+      type: Object,
       required: true
     }
   },
@@ -1808,7 +1809,7 @@ __webpack_require__.r(__webpack_exports__);
     "v-iframe": _IframeComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    frames: {
+    atoms: {
       type: Array,
       required: true
     }
@@ -36669,7 +36670,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "iframe-item" }, [
     _c("div", { staticClass: "iframe" }, [
-      _c("iframe", { attrs: { src: _vm.url } })
+      _c("iframe", { attrs: { scrolling: "no", src: _vm.data.preview_url } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "iframe-overlay" })
     ])
   ])
 }
@@ -36698,8 +36701,8 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "iframe-wrapper" },
-    _vm._l(_vm.frames, function(link, index) {
-      return _c("v-iframe", { key: index, attrs: { url: link } })
+    _vm._l(_vm.atoms, function(atom) {
+      return _c("v-iframe", { key: atom.id, attrs: { data: atom } })
     }),
     1
   )
@@ -47973,35 +47976,31 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('IframeGridComponent', __webpack_require__(/*! ./components/IframeGridComponent.vue */ "./resources/js/components/IframeGridComponent.vue").default);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+var state = JSON.parse(window.__INITIAL_STATE__);
 var app = new Vue({
-  el: '#mainContent',
+  el: '#app',
   data: {
-    frameData: ["http://localhost:80", "http://localhost:80", "http://localhost:80", "http://localhost:80", "http://localhost:80", "http://localhost:80", "http://localhost:80", "http://localhost:80", "http://localhost:80"]
+    state: state
+  },
+  computed: {
+    aria1: function aria1() {
+      return this.state.current_page == 1 ? 'page' : null;
+    },
+    ariaLast: function ariaLast() {
+      return this.state.current_page == this.state.last_page ? 'page' : '';
+    },
+    baseUrl: function baseUrl() {
+      return this.state.path + '?page=';
+    },
+    loopCounter: function loopCounter() {
+      return this.state.last_page - 3 >= 0 ? this.state.last_page - 2 : 0;
+    }
   }
 });
 

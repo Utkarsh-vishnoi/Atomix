@@ -1,6 +1,6 @@
 <template>
 	<div class="iframe-wrapper">
-    	<v-iframe v-for="(link, index) in frames" :key="index" :url="link"></v-iframe>
+    	<v-iframe v-for="atom in atoms" :key="atom.id" :data="atom"></v-iframe>
    	</div>
 </template>
 
@@ -12,7 +12,7 @@ import IframeComponent from './IframeComponent'
     		"v-iframe": IframeComponent
     	},
     	props: {
-    		frames: {
+    		atoms: {
     			type: Array,
     			required: true
     		}
