@@ -18,12 +18,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script type="text/javascript">
-        @yield('headerScript')
-    </script>
+
 </head>
 <body>
-    @include('layouts.components.app.navigation')
+    @include('layouts.components.editor.navigation')
     <div id="app">
         @yield('content')
     </div>

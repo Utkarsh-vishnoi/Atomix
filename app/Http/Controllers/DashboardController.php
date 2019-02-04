@@ -3,6 +3,7 @@
 namespace Atomix\Http\Controllers;
 
 use Auth;
+use Atomix\Atom;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -19,9 +20,9 @@ class DashboardController extends Controller
         return redirect('/');
     }
 
-    public function getFrames()
+    public function home()
     {
-   		$atoms = Auth::user()->atoms()->exclude(['skel', 'style', 'func', 'updated_at'])->get();
-   		return response()->json($atoms);
+        $atoms = Atom::exclude(['skel', 'style', 'func', 'updated_at'])->paginate(9);
+        return view('home', ['atoms' => $atoms]);
     }
 }

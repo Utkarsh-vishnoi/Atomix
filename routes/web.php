@@ -13,13 +13,9 @@
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', function () {
-	return view('home');
-} );
+Route::get('/', 'DashboardController@home');
 
 Route::get('/dashboard', "DashboardController@index")->middleware('auth');
-
-Route::post('/json/frames', 'DashboardController@getFrames');
 
 Route::get('/atom/new', 'AtomController@new')->middleware('verified')->name('newAtom');
 

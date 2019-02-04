@@ -3,6 +3,7 @@
 namespace Atomix\Http\Controllers;
 
 use Auth;
+use Atomix\Atom;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,5 +18,11 @@ class AtomController extends Controller
     public function new()
     {
         return view('editor');
+    }
+
+    public function preview($id)
+    {
+    	$atom = Atom::find($id);
+    	dd($atom);
     }
 }
