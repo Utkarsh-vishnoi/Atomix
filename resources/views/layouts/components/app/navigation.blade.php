@@ -25,13 +25,11 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
+                            <li class="nav-item nav-text-menu">
                                 <a class="nav-link text-uppercase" href="{{ route('newAtom') }}">{{ __('New Atom') }}</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                                <a id="navbarDropdown" class="nav-link text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-circle" src="{{ Gravatar::get(Auth::user()->email, 'navigation') }}" height="32" width="32" /></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item text-uppercase" href="{{ route('logout') }}"
@@ -44,9 +42,6 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
-                            <li class="nav-item">
-                                <img class="img-circle" src="{{ Gravatar::get(Auth::user()->email, 'navigation') }}" height="32" width="32" />
                             </li>
                         @endguest
                     </ul>
