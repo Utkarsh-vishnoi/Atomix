@@ -9,7 +9,7 @@ window.__INITIAL_STATE__ = "{!! addslashes(json_encode($atoms)) !!}";
 @endsection
 
 @section('content')
-	<iframe-grid-component :atoms="state.data"></iframe-grid-component>
+    <iframe-grid-component :rows="rows" :records_per_row="per_row" :atoms="state.data"></iframe-grid-component>
 	<ul class="pagination justify-content-center" role="navigation">
         <li :class="{ disabled:!state.prev_page_url }" class="page-item" :aria-disabled="!state.prev_page_url" rel="previous" aria-label="&laquo; Previous"><a :href="state.prev_page_url" :aria-disabled="!state.prev_page_url" v-show="state.prev_page_url" class="page-link" rel="previous">&laquo;</a><span v-show="!state.prev_page_url" class="page-link" aria-hidden="true">&laquo;</span></li>
 

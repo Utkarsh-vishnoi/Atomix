@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Iframe Grid
+@import 'iframe-grid';
+
 // nProgress Bar
 // @import url('https://unpkg.com/nprogress@0.2.0/nprogress.css');
 
@@ -17,6 +20,7 @@
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  margin-bottom: 15px;
 }
 
 .img-circle {

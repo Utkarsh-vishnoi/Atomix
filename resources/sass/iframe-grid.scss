@@ -1,0 +1,95 @@
+.iframe {
+  position: relative;
+  height: 200px;
+}
+
+.iframe-header {
+  position: relative;
+  height: 32px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.iframe-heading {
+  margin-bottom: 0;
+}
+
+.iframe-footer {
+  height: 32px;
+}
+
+iframe {
+  transform: scale(0.5);
+  transform-origin: 0% 0%;
+  overflow: hidden;
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  border-style: none;
+}
+
+.iframe-card {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+}
+
+.iframe-header .box {
+  float: left;
+  height: 32px;
+}
+
+.iframe-header .box:nth-child(1) {
+  width: 70%;
+  padding: 5px;
+}
+
+.iframe-header .box:nth-child(2) {
+  width: 30%;
+  padding: 5px;
+  text-align: right;
+}
+
+.user-gravatar {
+  border-radius: 50%;
+}
+
+.iframe-footer .box {
+  float: left;
+  height: 32px;
+}
+
+.iframe-footer .box:nth-child(1) {
+  width: 80%;
+  padding: 5px;
+}
+
+.iframe-footer .box:nth-child(2) {
+  width: 20%;
+  padding: 5px;
+  text-align: right;
+}
+
+.iframe-view {
+  border-top: 2px solid rgba(0, 0, 0, 0.25);
+  margin-top: 5px;
+}
+
+.view-small {
+  font-size: 10px;
+  padding-left: 5px;
+}
+
+.iframe-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.iframe-overlay:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.iframe-body {
+    overflow: hidden;
+    position: relative;
+}

@@ -12,8 +12,11 @@ let state = JSON.parse(window.__INITIAL_STATE__);
 
 const app = new Vue({
     el: '#app',
-    data: {
-        state: state
+    data: function () {
+        return {
+            state: state,
+            per_row: 3
+        }
     },
     computed: {
         aria1: function() {
@@ -27,6 +30,18 @@ const app = new Vue({
         },
         loopCounter: function() {
             return this.state.last_page - 3 >= 0 ? this.state.last_page - 2 : 0;
+        },
+        current_page_view: function () {
+            return this.state.to - this.state.from;
+        },
+        rows: function() {
+            return Math.ceil((this.current_page_view + 1) / this.per_row);
         }
     }
+});
+
+$(document).ready(function() {
+    $('iframe').on('load', function() {
+        console.log('loaded!');
+    });
 });
