@@ -10697,12 +10697,12 @@ iframe {
 }
 
 .iframe-header .box:nth-child(1) {
-  width: 70%;
+  width: 85%;
   padding: 5px;
 }
 
 .iframe-header .box:nth-child(2) {
-  width: 30%;
+  width: 15%;
   padding: 5px;
   text-align: right;
 }
@@ -10717,12 +10717,12 @@ iframe {
 }
 
 .iframe-footer .box:nth-child(1) {
-  width: 80%;
+  width: 90%;
   padding: 5px;
 }
 
 .iframe-footer .box:nth-child(2) {
-  width: 20%;
+  width: 10%;
   padding: 5px;
   text-align: right;
 }
@@ -10751,6 +10751,10 @@ iframe {
 .iframe-body {
   overflow: hidden;
   position: relative;
+}
+
+.hoverLike {
+  color: red !important;
 }
 
 .navbar-laravel {
