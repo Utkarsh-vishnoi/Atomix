@@ -21,4 +21,8 @@ Route::get('/atom/new', 'AtomController@new')->middleware('verified')->name('new
 
 Route::get('/atom/edit', 'AtomController@edit')->middleware('verified');
 
-Route::get('/atom/preview/{id}', 'AtomController@preview')->name('preview');
+Route::get('/atom/{id}/preview/', 'AtomController@preview')->name('atom.preview');
+
+Route::get('/atom/{id}/like', 'AtomController@Like')->middleware('verified')->name('atom.like');
+
+Route::get('/atom/{id}/unlike', 'AtomController@Unlike')->middleware('verified')->name('atom.unlike');

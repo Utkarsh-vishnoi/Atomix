@@ -12327,6 +12327,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -12340,12 +12343,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      like: false
+      highlight: false
     };
   },
   computed: {
     col: function col() {
       return "col-" + this.col_size;
+    }
+  },
+  methods: {
+    like: function like(state) {
+      var _this = this;
+
+      var url = state ? this.data.like_url : this.data.unlike_url;
+      axios.get(url).then(function (response) {
+        if (response.data.success === 'gotIt') {
+          _this.data.is_liked = !_this.data.is_liked;
+        } else {}
+      });
     }
   },
   mounted: function mounted() {
@@ -47542,24 +47557,66 @@ var render = function() {
           _c(
             "a",
             {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.data.is_liked,
+                  expression: "!data.is_liked"
+                }
+              ],
               staticStyle: { cursor: "pointer" },
               on: {
                 mouseover: function($event) {
-                  _vm.like = true
+                  _vm.highlight = true
                 },
                 mouseleave: function($event) {
-                  _vm.like = false
+                  _vm.highlight = false
+                },
+                click: function($event) {
+                  return _vm.like(1)
                 }
               }
             },
             [
               _c("font-awesome-icon", {
-                class: { hoverLike: _vm.like },
+                class: { hoverLike: _vm.highlight },
                 staticStyle: {
                   color: "rgba(0, 0, 0, 0.5)",
                   "font-size": "1rem"
                 },
                 attrs: { icon: ["far", "heart"], title: "Like" }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.data.is_liked,
+                  expression: "data.is_liked"
+                }
+              ],
+              staticStyle: { cursor: "pointer" },
+              on: {
+                click: function($event) {
+                  return _vm.like(0)
+                }
+              }
+            },
+            [
+              _c("font-awesome-icon", {
+                staticClass: "hoverLike",
+                staticStyle: {
+                  color: "rgba(0, 0, 0, 0.5)",
+                  "font-size": "1rem"
+                },
+                attrs: { icon: ["fas", "heart"], title: "Unlike" }
               })
             ],
             1
@@ -59799,7 +59856,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faHeart"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faHeart"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeart"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"]);
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 

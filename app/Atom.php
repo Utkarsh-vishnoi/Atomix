@@ -2,11 +2,16 @@
 
 namespace Atomix;
 
+use Auth;
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 
+use Overtrue\LaravelFollow\Traits\CanBeLiked;
+
 class Atom extends Model
 {
+    use CanBeLiked;
     /**
      * The attributes that are mass assignable.
      *
@@ -16,7 +21,7 @@ class Atom extends Model
         'title', 'description', 'skel', 'style', 'func'
     ];
 
-    protected $appends = ['preview_url'];
+    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked'];
 
     protected $hidden = [
         'user_id'
@@ -38,8 +43,24 @@ class Atom extends Model
     	return $this->belongsTo('Atomix\User');
     }
 
-    public function getPreviewUrlAttribute() {
-        return route('preview', [ 'id' => $this->id ]);
+    public function getPreviewUrlAttribute()
+    {
+        return route('atom.preview', [ 'id' => $this->id ]);
+    }
+
+    public function getLikeUrlAttribute()
+    {
+        return route('atom.like', [ 'id' => $this->id ]);
+    }
+
+    public function getUnlikeUrlAttribute()
+    {
+        return route('atom.unlike', [ 'id' => $this->id ]);
+    }
+
+    public function getIsLikedAttribute()
+    {
+        return $this->isLikedBy(Auth::user());
     }
 
     public function scopeExclude($query,$value = array()) 

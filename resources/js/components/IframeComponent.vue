@@ -17,7 +17,10 @@
                 <div class="box">
                     <a href="#">{{ data.title }}</a>
                 </div>
-                <div class="box"><a style="cursor: pointer;" @mouseover="like = true" @mouseleave="like = false"><font-awesome-icon :class="{ hoverLike:like }" :icon="['far', 'heart']" title="Like" style="color: rgba(0, 0, 0, 0.5); font-size: 1rem" /></a></div>
+                <div class="box">
+                    <a style="cursor: pointer;" @mouseover="highlight = true" v-show="!data.is_liked" @mouseleave="highlight = false" v-on:click="like(1)"><font-awesome-icon :class="{ hoverLike:highlight }" :icon="['far', 'heart']" title="Like" style="color: rgba(0, 0, 0, 0.5); font-size: 1rem" /></a>
+                    <a style="cursor: pointer;" v-show="data.is_liked" v-on:click="like(0)"><font-awesome-icon :icon="['fas', 'heart']" title="Unlike" class="hoverLike" style="color: rgba(0, 0, 0, 0.5); font-size: 1rem" /></a>
+                </div>
             </div>
         </div>
     </div>
@@ -35,9 +38,29 @@
                 required: true
             }
         },
+        data() {
+            return {
+                highlight: false
+            };
+        },
         computed: {
             col: function () {
                 return "col-" + this.col_size;
+            }
+        },
+        methods: {
+            like: function(state) {
+                var url = state ? this.data.like_url : this.data.unlike_url;
+                axios.get(url).then((response)  =>  {
+                    if (response.data.success === 'gotIt')
+                    {
+                        this.data.is_liked = !this.data.is_liked;
+                    }
+                    else
+                    {
+
+                    }
+                });
             }
         },
         mounted() {

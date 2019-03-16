@@ -22,7 +22,7 @@ class DashboardController extends Controller
 
     public function home()
     {
-        $atoms = Atom::exclude(['skel', 'style', 'func', 'updated_at'])->paginate(9);
+        $atoms = Atom::exclude(['skel', 'style', 'func', 'updated_at'])->with('User')->paginate(9);
         return view('home', ['atoms' => $atoms]);
     }
 }

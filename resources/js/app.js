@@ -1,11 +1,11 @@
 require('./bootstrap');
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEye as fasEye } from '@fortawesome/free-solid-svg-icons'
+import { faEye as fasEye, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(farHeart, fasEye);
+library.add(farHeart, fasHeart, fasEye);
 
 window.Vue = require('vue');
 
@@ -13,7 +13,6 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
-
 
 let state = JSON.parse(window.__INITIAL_STATE__);
 
