@@ -51,16 +51,8 @@
         methods: {
             like: function(state) {
                 var url = state ? this.data.like_url : this.data.unlike_url;
-                axios.get(url).then((response)  =>  {
-                    if (response.data.success === 'gotIt')
-                    {
-                        this.data.is_liked = !this.data.is_liked;
-                    }
-                    else
-                    {
-
-                    }
-                });
+                this.data.is_liked = !this.data.is_liked;
+                axios.get(url);
             }
         },
         mounted() {
