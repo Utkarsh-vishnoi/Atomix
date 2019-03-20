@@ -1,10 +1,22 @@
 <?php
 
-$url = parse_url(getenv("DATABASE_URL"));
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
+if (getenv('DATABASE_URL')) {
+    $url = parse_url(getenv('DATABASE_URL'));
+
+    putenv('DB_HOST='.$url['host']);
+    putenv('DB_PORT='.$url['port']);
+    putenv('DB_PASSWORD='.$url['pass']);
+    putenv('DB_USERNAME='.$url['user']);
+    putenv('DB_DATABASE='.substr($url['path'], 1));
+}
+
+if (getenv('REDIS_URL')) {
+    $url = parse_url(getenv('REDIS_URL'));
+
+    putenv('REDIS_HOST='.$url['host']);
+    putenv('REDIS_PORT='.$url['port']);
+    putenv('REDIS_PASSWORD='.$url['pass']);
+}
 
 return [
 
@@ -64,11 +76,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $host,
+            'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '5432'),
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'user'),
+            'password' => env('DB_PASSWORD', 'secret'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
