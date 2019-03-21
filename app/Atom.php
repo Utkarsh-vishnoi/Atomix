@@ -21,7 +21,7 @@ class Atom extends Model
         'title', 'description', 'skel', 'style', 'func'
     ];
 
-    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked'];
+    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked', 'likes_count'];
 
     protected $hidden = [
         'user_id'
@@ -61,6 +61,11 @@ class Atom extends Model
     public function getIsLikedAttribute()
     {
         return $this->isLikedBy(Auth::user());
+    }
+
+    public function getLikesCountAttribute()
+    {
+        return $this->likers()->count();
     }
 
     public function scopeExclude($query,$value = array()) 

@@ -11,7 +11,7 @@
                 <div class="iframe"><iframe scrolling="no" :src="data.preview_url" /></iframe></div>
                 <a href="#"><div class="iframe-overlay"></div></a></div>
             <div class="iframe-view">
-                <span class="view-small">15,483 Likes</span>
+                <span class="view-small">{{data.likes_count}} {{data.likes_count | pluralize('Like')}}</span>
             </div>
             <div class="iframe-footer">
                 <div class="box">
