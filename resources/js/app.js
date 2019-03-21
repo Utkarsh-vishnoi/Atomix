@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(farHeart, fasHeart, fasEye);
 
 window.Vue = require('vue');
+Vue.use(require('vue2-filters'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
