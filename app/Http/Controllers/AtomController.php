@@ -7,6 +7,8 @@ use Atomix\Atom;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redis;
+
 
 class AtomController extends Controller
 {
@@ -20,9 +22,16 @@ class AtomController extends Controller
         return view('editor');
     }
 
-    public function preview($id)
+    public function edit($atomId)
     {
-    	$atom = Atom::find($id);
+        $atom = Atom::find($atomId);
+        Redis::command('incr', ['Atom:views:' . $atomId]);
+        dd($atomId);
+    }
+
+    public function preview($atomId)
+    {
+    	$atom = Atom::find($atomId);
     	dd($atom);
     }
 

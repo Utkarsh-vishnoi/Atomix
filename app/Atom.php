@@ -4,6 +4,7 @@ namespace Atomix;
 
 use Auth;
 
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +22,7 @@ class Atom extends Model
         'title', 'description', 'skel', 'style', 'func'
     ];
 
-    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked', 'likes_count'];
+    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked', 'likes_count', 'views_count', 'edit_url'];
 
     protected $hidden = [
         'user_id'
@@ -66,6 +67,16 @@ class Atom extends Model
     public function getLikesCountAttribute()
     {
         return $this->likers()->count();
+    }
+
+    public function getViewsCountAttribute()
+    {
+        return Redis::get('Atom:views:' . $this->id);
+    }
+
+    public function getEditUrlAttribute()
+    {
+        return route('atom.edit', [ 'id' => $this->id ]);
     }
 
     public function scopeExclude($query,$value = array()) 

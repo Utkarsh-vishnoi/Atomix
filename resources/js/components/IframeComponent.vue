@@ -5,11 +5,11 @@
                 <div class="box">
                     <a href="#"><img class="user-gravatar" src="https://www.gravatar.com/avatar/5b7920e60af0fe2fab7ea95045d3d024.jpg?s=40&d=mm&r=g" height="20" width="20" /></a> <a href="#" style="font-size: 1rem">{{ data.user.name }}</a>
                 </div>
-                <div class="box views"><font-awesome-icon icon="eye" aria-hidden="true" />14K</div>
+                <div class="box views"><font-awesome-icon icon="eye" aria-hidden="true" /> {{ data.views_count | viewFilter }}</div>
             </div>
             <div class="iframe-body">
                 <div class="iframe"><iframe scrolling="no" :src="data.preview_url" /></iframe></div>
-                <a href="#"><div class="iframe-overlay"></div></a></div>
+                <a :href="data.edit_url"><div class="iframe-overlay"></div></a></div>
             <div class="iframe-view">
                 <span class="view-small">{{data.likes_count}} {{data.likes_count | pluralize('Like')}}</span>
             </div>

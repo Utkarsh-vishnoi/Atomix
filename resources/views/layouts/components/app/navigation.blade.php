@@ -26,7 +26,7 @@
                             @endif
                         @else
                             <li class="nav-item nav-text-menu">
-                                <a class="nav-link text-uppercase" href="{{ route('newAtom') }}">{{ __('New Atom') }}</a>
+                                <a class="nav-link text-uppercase" href="{{ route('atom.new') }}">{{ __('New Atom') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-circle" src="{{ Gravatar::get(Auth::user()->email, 'navigation') }}" height="32" width="32" /></a>
