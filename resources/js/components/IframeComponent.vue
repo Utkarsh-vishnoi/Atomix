@@ -1,5 +1,5 @@
 <template>
-    <div class="col" :class="col">
+    <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" style="padding-bottom:15px" >
         <div class="iframe-card">
             <div class="iframe-header">
                 <div class="box">
@@ -51,12 +51,30 @@
         methods: {
             like: function(state) {
                 var url = state ? this.data.like_url : this.data.unlike_url;
-                this.data.is_liked = !this.data.is_liked;
-                axios.get(url);
-            }
-        },
+                if ($user) {
+                    this.data.is_liked = !this.data.is_liked;
+                    axios.get(url);
+                }
+                else {
                     var notifi = new Noty({
-            console.log('Iframe Component mounted.');
+                        text: 'Please login/signup to like this creation.',
+                        buttons: [
+                            Noty.button('Sign Up', 'btn btn-noty btn-outline-light', function () {
+                                console.log('SignUp clicked');
+                            }, {id: 'btn_sign_up'}),
+                            Noty.button('Login', 'btn btn-noty btn-outline-light', function () {
+                                console.log('Login clicked');
+                                notifi.close();
+                            }, {id: 'btn_log_in'}),
+                            Noty.button('Cancel', 'btn btn-noty btn-outline-light', function () {
+                                console.log('Cancel clicked');
+                                notifi.close();
+                            }, {id: 'btn_cancel'})
+                          ]
+                    }).show();
+                }
+                
+            }
         }
     }
 </script>

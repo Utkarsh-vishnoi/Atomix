@@ -31,6 +31,8 @@
         "@fortawesome/free-regular-svg-icons": "^5.7.2",
         "@fortawesome/free-solid-svg-icons": "^5.7.2",
         "@fortawesome/vue-fontawesome": "^0.1.5",
+        "mo-js": "^0.288.2",
+        "noty": "^3.2.0-beta",
         "vue2-filters": "^0.5.1"
     }
 }

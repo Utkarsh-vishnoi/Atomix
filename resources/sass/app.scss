@@ -17,6 +17,10 @@
 // Editor Stylesheet
 @import 'editor';
 
+// Noty
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/nest.scss";
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -34,4 +38,8 @@
 
 .nav-text-menu {
 	margin-top: 7px;
+}
+
+.btn-noty {
+	margin: auto 10px;
 }

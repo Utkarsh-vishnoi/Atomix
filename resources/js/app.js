@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('./decimalReAdjust');
+require('./noty');
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faEye as fasEye, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
