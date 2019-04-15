@@ -24,9 +24,6 @@ import IframeComponent from './IframeComponent'
                 type: Number,
                 required: true
             }
-    	},
-        mounted() {
-            console.log('Iframe Row Component mounted.');
-        }
+    	}
     }
 </script>

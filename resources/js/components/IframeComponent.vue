@@ -55,7 +55,7 @@
                 axios.get(url);
             }
         },
-        mounted() {
+                    var notifi = new Noty({
             console.log('Iframe Component mounted.');
         }
     }

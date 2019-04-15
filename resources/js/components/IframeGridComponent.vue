@@ -36,9 +36,6 @@ import IframeRowComponent from './IframeRowComponent'
             grid_width: function () {
                 return 12 / this.records_per_row;
             }
-        },
-        mounted() {
-            console.log('Iframe Grid Component mounted.');
         }
     }
 </script>
