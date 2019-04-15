@@ -32,21 +32,12 @@
             data: {
                 type: Object,
                 required: true
-            },
-            col_size: {
-                type: Number,
-                required: true
             }
         },
         data() {
             return {
                 highlight: false
             };
-        },
-        computed: {
-            col: function () {
-                return "col-" + this.col_size;
-            }
         },
         methods: {
             like: function(state) {

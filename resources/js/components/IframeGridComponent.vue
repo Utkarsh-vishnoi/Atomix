@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-        <v-iframe-row v-for="(row, index) in rows" :id="index" :atom_grid="atom_grid[index]" :key="index" :width="grid_width"></v-iframe-row>
+        <v-iframe-row v-for="(row, index) in rows" :id="index" :atom_grid="atom_grid[index]" :key="index"></v-iframe-row>
    	</div>
 </template>
 
@@ -32,9 +32,6 @@ import IframeRowComponent from './IframeRowComponent'
                     grid[i] = this.atoms.slice(j, j + this.records_per_row);
                 }
                 return grid;
-            },
-            grid_width: function () {
-                return 12 / this.records_per_row;
             }
         }
     }

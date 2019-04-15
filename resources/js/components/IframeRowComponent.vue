@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-        <v-iframe v-for="atom in atom_grid" :key="atom.id" :data="atom" :col_size="width"></v-iframe>
+        <v-iframe v-for="atom in atom_grid" :key="atom.id" :data="atom"></v-iframe>
    	</div>
 </template>
 
@@ -17,10 +17,6 @@ import IframeComponent from './IframeComponent'
     			required: true
     		},
             id: {
-                type: Number,
-                required: true
-            },
-            width: {
                 type: Number,
                 required: true
             }
