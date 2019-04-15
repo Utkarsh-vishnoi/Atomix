@@ -1,5 +1,5 @@
 <template>
-	<div class="row" style="margin-bottom: 30px">
+	<div class="row">
         <v-iframe v-for="atom in atom_grid" :key="atom.id" :data="atom" :col_size="width"></v-iframe>
    	</div>
 </template>

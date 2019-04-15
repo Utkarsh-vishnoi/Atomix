@@ -1,5 +1,5 @@
 <template>
-    <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" style="padding-bottom:15px" >
+    <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" style="padding-bottom: 15px; padding-top: 15px;" >
         <div class="iframe-card">
             <div class="iframe-header">
                 <div class="box">
