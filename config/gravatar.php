@@ -31,10 +31,16 @@ return array(
 		// If you require a file-type extension (some places do) then you may also add an (optional) .jpg extension to that URL
 		'forceExtension' => 'jpg',
 	),
-	'navigation' => array (
-	    'size'   => 64,
-	),
-	'page' => array (
-	    'size'   => 160,
-	)
+
+	'navigation' => [
+	   'size'   => 64
+	],
+
+	'full' => [
+	    'size'   => 160
+	],
+	
+	'component' => [
+		'size' => 40
+	]
 );

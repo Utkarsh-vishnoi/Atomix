@@ -22,7 +22,7 @@ class Atom extends Model
         'title', 'description', 'skel', 'style', 'func'
     ];
 
-    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked', 'likes_count', 'views_count', 'edit_url'];
+    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked', 'likes_count', 'views_count', 'edit_url', 'user_image_url'];
 
     protected $hidden = [
         'user_id'
@@ -77,6 +77,12 @@ class Atom extends Model
     public function getEditUrlAttribute()
     {
         return route('atom.edit', [ 'id' => $this->id ]);
+    }
+
+    public function getUserImageUrlAttribute()
+    {
+        $gravatar = app('gravatar');
+        return $gravatar->get($this->user()->first()->email, 'component');
     }
 
     public function scopeExclude($query,$value = array()) 

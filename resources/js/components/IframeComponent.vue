@@ -3,7 +3,7 @@
         <div class="iframe-card">
             <div class="iframe-header">
                 <div class="box">
-                    <a href="#"><img class="user-gravatar" src="https://www.gravatar.com/avatar/5b7920e60af0fe2fab7ea95045d3d024.jpg?s=40&d=mm&r=g" height="20" width="20" /></a> <a href="#" style="font-size: 1rem">{{ data.user.name }}</a>
+                    <a href="#"><img class="user-gravatar" :src="data.user_image_url" height="20" width="20" /></a> <a href="#" style="font-size: 1rem">{{ data.user.name }}</a>
                 </div>
                 <div class="box views">{{data.views_count | viewFilter}} <font-awesome-icon icon="eye" aria-hidden="true" /></div>
             </div>
