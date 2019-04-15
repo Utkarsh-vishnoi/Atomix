@@ -71,7 +71,7 @@ class Atom extends Model
 
     public function getViewsCountAttribute()
     {
-        return Redis::get('Atom:views:' . $this->id);
+        return Redis::get('Atom:views:' . $this->id) ? : 0;
     }
 
     public function getEditUrlAttribute()

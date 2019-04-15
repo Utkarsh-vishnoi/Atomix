@@ -17,6 +17,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
 
 let state = JSON.parse(window.__INITIAL_STATE__ ? window.__INITIAL_STATE__ : '{}');
+window.$user = JSON.parse(window.$user ? window.$user : null);
 
 Vue.filter('viewFilter', function (value) {
   if (!value) return 0

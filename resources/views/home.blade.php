@@ -6,6 +6,7 @@
 
 @section('headerScript')
 window.__INITIAL_STATE__ = "{!! addslashes(json_encode($atoms)) !!}";
+window.$user = "{!! addslashes(json_encode($user)) !!}";
 @endsection
 
 @section('content')
