@@ -16,6 +16,7 @@ Vue.use(require('vue2-filters'));
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
+Vue.component('FooterNavComponent', require('./components/FooterNavComponent').default);
 
 let state = JSON.parse(window.__INITIAL_STATE__ ? window.__INITIAL_STATE__ : '{}');
 window.$user = JSON.parse(window.$user ? window.$user : null);
@@ -47,23 +48,14 @@ const app = new Vue({
         }
     },
     computed: {
-        aria1: function() {
-            return this.state.current_page == 1 ? 'page' : null;
-        },
-        ariaLast: function() {
-            return this.state.current_page == this.state.last_page ? 'page' : '';
-        },
-        baseUrl: function() {
-            return this.state.path + '?page=';
-        },
-        loopCounter: function() {
-            return this.state.last_page - 3 >= 0 ? this.state.last_page - 2 : 0;
-        },
-        current_page_view: function () {
-            return this.state.to - this.state.from;
-        },
         rows: function() {
-            return Math.ceil((this.current_page_view + 1) / this.per_row);
+            var current_page_views = this.state.to - this.state.from;
+            return Math.ceil((current_page_views + 1) / this.per_row);
+        },
+        nav_state: function() {
+            var state = this.state;
+            delete state.data;
+            return state;
         }
     }
 });
