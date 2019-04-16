@@ -15,7 +15,7 @@
             </div>
             <div class="iframe-footer">
                 <div class="box">
-                    <a :href="data.preview_url">{{ data.title }}</a>
+                    <a :href="data.edit_url">{{ data.title }}</a>
                 </div>
                 <div class="box">
                     <a style="cursor: pointer;" @mouseover="highlight = true" v-show="!data.is_liked" @mouseleave="highlight = false" v-on:click="like(1)"><font-awesome-icon :class="{ hoverLike:highlight }" :icon="['far', 'heart']" title="Like" style="color: rgba(0, 0, 0, 0.5); font-size: 1rem" /></a>
