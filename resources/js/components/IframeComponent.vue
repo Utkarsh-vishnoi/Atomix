@@ -51,16 +51,14 @@
                         text: 'Please login/signup to like this creation.',
                         buttons: [
                             Noty.button('Sign Up', 'btn btn-noty btn-outline-light', function () {
-                                console.log('SignUp clicked');
+                                window.location.href = route('register');
                             }, {id: 'btn_sign_up'}),
                             Noty.button('Login', 'btn btn-noty btn-outline-light', function () {
-                                console.log('Login clicked');
-                                notifi.close();
+                                window.location.href = route('login');
                             }, {id: 'btn_log_in'}),
-                            Noty.button('Cancel', 'btn btn-noty btn-outline-light', function () {
-                                console.log('Cancel clicked');
+                            Noty.button('Close', 'btn btn-noty btn-outline-light', function () {
                                 notifi.close();
-                            }, {id: 'btn_cancel'})
+                            }, {id: 'btn_close'})
                           ]
                     }).show();
                 }
