@@ -17,6 +17,7 @@ Vue.use(require('vue2-filters'));
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
 Vue.component('FooterNavComponent', require('./components/FooterNavComponent').default);
+Vue.component('LoginFormComponent', require('./components/LoginFormComponent').default);
 
 let state = JSON.parse(window.__INITIAL_STATE__ ? window.__INITIAL_STATE__ : '{}');
 window.$user = JSON.parse(window.$user ? window.$user : null);
@@ -37,6 +38,12 @@ Vue.filter('viewFilter', function (value) {
     return ((value % 1000000000 < 100000000) ? Math.round(value / 1000000000) : Math.floor10(value / 1000000000, -1)) + "B";
   // else if (value < 1000000000000) // 1T 10B - 999B
   //   return Math.floor(value / 1000000000) + "B";
+});
+
+Vue.mixin({
+    methods: {
+        route: route
+    }
 });
 
 const app = new Vue({

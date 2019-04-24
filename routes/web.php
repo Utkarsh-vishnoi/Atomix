@@ -13,9 +13,9 @@
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'DashboardController@home');
+Route::get('/', 'DashboardController@home')->name('home');
 
-Route::get('/dashboard', "DashboardController@index")->middleware('auth');
+Route::get('/dashboard', "DashboardController@index")->middleware('auth')->name('dashboard');
 
 Route::get('/atom/new', 'AtomController@new')->middleware('verified')->name('atom.new');
 
