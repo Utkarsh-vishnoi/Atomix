@@ -17,7 +17,7 @@ Vue.use(require('vue2-filters'));
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
 Vue.component('FooterNavComponent', require('./components/FooterNavComponent').default);
-Vue.component('LoginFormComponent', require('./components/LoginFormComponent').default);
+Vue.component('LoginFormComponent', require('./components/LogInFormComponent').default);
 
 let state = JSON.parse(window.__INITIAL_STATE__ ? window.__INITIAL_STATE__ : '{}');
 window.$user = JSON.parse(window.$user ? window.$user : null);
