@@ -22,7 +22,7 @@ class Atom extends Model
         'title', 'description', 'skel', 'style', 'func'
     ];
 
-    protected $appends = ['preview_url', 'like_url', 'unlike_url', 'is_liked', 'likes_count', 'views_count', 'edit_url', 'user_image_url'];
+    protected $appends = ['is_liked', 'likes_count', 'views_count', 'user_image_url'];
 
     protected $hidden = [
         'user_id'
@@ -44,21 +44,6 @@ class Atom extends Model
     	return $this->belongsTo('Atomix\User');
     }
 
-    public function getPreviewUrlAttribute()
-    {
-        return route('atom.preview', [ 'id' => $this->id ]);
-    }
-
-    public function getLikeUrlAttribute()
-    {
-        return route('atom.like', [ 'id' => $this->id ]);
-    }
-
-    public function getUnlikeUrlAttribute()
-    {
-        return route('atom.unlike', [ 'id' => $this->id ]);
-    }
-
     public function getIsLikedAttribute()
     {
         return $this->isLikedBy(Auth::user());
@@ -72,11 +57,6 @@ class Atom extends Model
     public function getViewsCountAttribute()
     {
         return Redis::get('Atom:views:' . $this->id) ? : 0;
-    }
-
-    public function getEditUrlAttribute()
-    {
-        return route('atom.edit', [ 'id' => $this->id ]);
     }
 
     public function getUserImageUrlAttribute()
