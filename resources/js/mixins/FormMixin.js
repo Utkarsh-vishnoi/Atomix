@@ -6,6 +6,7 @@ export default {
       success: false,
       loaded: true,
       action: '',
+      method: 'GET'
     }
   },
 
@@ -13,10 +14,10 @@ export default {
     submit() {
       if (this.loaded) {
         this.beforeSubmit();
-        axios.post(this.action, this.fields).then(response => {
+        axios[this.method.toLowerCase()](this.action, this.fields).then(response => {
           this.handleSuccess();
         }).catch(error => {
-          this.handleError();
+          this.handleError(error);
         });
       }
     },
@@ -25,8 +26,9 @@ export default {
       this.success = false;
       this.errors = {};
     },
-    handleError() {
+    handleError(error) {
       this.loaded = true;
+      console.log(error.response);
       if (error.response.status === 422) {
         this.errors = error.response.data.errors || {};
       }

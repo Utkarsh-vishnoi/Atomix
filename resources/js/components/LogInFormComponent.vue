@@ -1,5 +1,5 @@
 <template>
-    <form method="POST" @submit.prevent="submit">
+    <form @submit.prevent="submit">
         <div class="form-group row">
             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
@@ -54,7 +54,8 @@
         mixins: [ FormMixin ],
         data() {
             return {
-                action: route('login')
+                action: route('login'),
+                method: 'POST'
             }
         },
         methods: {

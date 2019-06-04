@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(farHeart, fasHeart, fasEye);
 
+window.pluralize = require('pluralize');
+window.gravatar = require('gravatar');
+
 window.Vue = require('vue');
 Vue.use(require('vue2-filters'));
 
@@ -18,6 +21,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('IframeGridComponent', require('./components/IframeGridComponent.vue').default);
 Vue.component('FooterNavComponent', require('./components/FooterNavComponent').default);
 Vue.component('LoginFormComponent', require('./components/LogInFormComponent').default);
+Vue.component('RegisterFormComponent', require('./components/RegisterFormComponent').default);
+Vue.component('ResetFormComponent', require('./components/ResetFormComponent').default);
+Vue.component('EmailFormComponent', require('./components/EmailFormComponent').default);
 
 let state = JSON.parse(window.__INITIAL_STATE__ ? window.__INITIAL_STATE__ : '{}');
 window.$user = JSON.parse(window.$user ? window.$user : null);
