@@ -22,7 +22,7 @@ class Atom extends Model
         'title', 'description', 'skel', 'style', 'func'
     ];
 
-    protected $appends = ['is_liked', 'likes_count', 'views_count', 'user_image_url'];
+    protected $appends = ['is_liked', 'likes_count', 'views_count'];
 
     protected $hidden = [
         'user_id'
@@ -57,12 +57,6 @@ class Atom extends Model
     public function getViewsCountAttribute()
     {
         return Redis::get('Atom:views:' . $this->id) ? : 0;
-    }
-
-    public function getUserImageUrlAttribute()
-    {
-        $gravatar = app('gravatar');
-        return $gravatar->get($this->user()->first()->email, 'component');
     }
 
     public function scopeExclude($query,$value = array()) 
