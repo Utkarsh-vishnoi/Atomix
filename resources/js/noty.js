@@ -82,7 +82,8 @@ Noty.overrideDefaults({
         }
     },
     modal: 'true',
-    type: 'info',
-    theme: 'nest',
-    closeWith: 'button'
+    type: 'alert',
+    theme: 'metroui',
+    // closeWith: 'button'
+    closeWith: ['button', 'click']
 });
